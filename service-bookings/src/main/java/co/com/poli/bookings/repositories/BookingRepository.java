@@ -1,12 +1,12 @@
 package co.com.poli.bookings.repositories;
 
-import co.com.poli.users.entities.User;
+import co.com.poli.bookings.entities.Booking;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface UserRepository  extends JpaRepository<User,Long> {
-    List<User> findAll();
+public interface BookingRepository extends JpaRepository<Booking,Long> {
+    List<Booking> findAll();
 }
