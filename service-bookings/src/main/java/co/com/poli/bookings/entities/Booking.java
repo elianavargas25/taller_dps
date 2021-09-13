@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
 import java.util.Objects;
 
 @Setter
@@ -33,9 +34,8 @@ public class Booking {
     @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     private Long showtimeid;
 
-    //  @NotEmpty(message = "Movies no debe ser vacio")
     @Column(name="movies")
-    private Long movies;
+    private List<Long> movies;
 
 
     @Override
