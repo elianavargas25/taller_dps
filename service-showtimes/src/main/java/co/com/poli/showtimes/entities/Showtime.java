@@ -3,35 +3,37 @@ package co.com.poli.showtimes.entities;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import java.util.Date;
 import java.util.Objects;
 
 @Setter
 @Getter
 @Entity
-@Table(name="users")
+@Table(name="showtimes")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 
-public class User {
+public class Showtime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id", updatable = false,nullable = false,unique = true)
     private Long id;
-   // @NotEmpty(message = "El nombre no debe ser vacio")
-    @Column(name="name")
-    private String name;
-  //  @NotEmpty(message = "El apellido no debe ser vacio")
-    @Column(name="lastname")
-    private String lastname;
+   @NotEmpty(message = "El campo date no debe ser vacio")
+    @Column(name="date")
+    private Date date;
+  //  @NotEmpty(message = "El movie no debe ser vacio")
+    @Column(name="movie")
+    private String movie;
 
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(id, user.id);
+        Showtime showtime = (Showtime) o;
+        return Objects.equals(id, showtime.id);
     }
 
     @Override
