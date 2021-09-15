@@ -35,15 +35,6 @@ public class ShowtimeController {
         return builder.success(showtime);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity delete(@PathVariable("id") Long id){
-        Showtime showtime = showtimeService.findById(id);
-        if(showtime==null){
-            return ResponseEntity.notFound().build();
-        }
-        showtimeService.delete(showtime);
-        return ResponseEntity.ok(showtime);
-    }
 
     @GetMapping
     public ResponseEntity<List<Showtime>> findAll(){
@@ -61,6 +52,11 @@ public class ShowtimeController {
             return builder.success(null);
         }
         return builder.success(showtime);
+    }
+
+    @PutMapping("/{id}")
+    public Response update (@PathVariable("id") Long id, @RequestBody Showtime showtime){
+        return builder.success(showtimeService.update(showtime, id));
     }
 
     private String formatMessage(BindingResult result){

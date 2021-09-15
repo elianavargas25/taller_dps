@@ -4,13 +4,12 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import java.util.Date;
-import java.util.Objects;
+import java.util.*;
 
 @Setter
 @Getter
 @Entity
-@Table(name="showtimes")
+@Table(name = "showtimes")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -18,14 +17,15 @@ import java.util.Objects;
 public class Showtime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id", updatable = false,nullable = false,unique = true)
+    @Column(name = "id", updatable = false, nullable = false, unique = true)
     private Long id;
-   @NotEmpty(message = "El campo date no debe ser vacio")
-    @Column(name="date")
+
+    @NotEmpty(message = "El campo date no debe ser vacio")
+    @Column(name = "date")
     private Date date;
-  //  @NotEmpty(message = "El movie no debe ser vacio")
-    @Column(name="movie")
-    private String movie;
+
+    @Column(name = "movie")
+    private Long movie;
 
 
     @Override

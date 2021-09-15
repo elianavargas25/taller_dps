@@ -1,11 +1,12 @@
 package co.com.poli.bookings.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import co.com.poli.bookings.model.Movie;
+import co.com.poli.bookings.model.Showtime;
+import co.com.poli.bookings.model.User;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import java.util.List;
 import java.util.Objects;
 
 @Setter
@@ -23,19 +24,21 @@ public class Booking {
     private Long id;
 
     @NotEmpty(message = "El user id no debe ser vacio")
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="userid" )
-    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-    private Long userid;
+    @Column(name="userid" )
+    private Long userId;
+    @Transient
+    private User user;
 
     @NotEmpty(message = "El show time id no debe ser vacio")
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="showtimeid")
-    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+    @Column(name="showtimeid")
     private Long showtimeid;
+    @Transient
+    private Showtime showtime;
 
     @Column(name="movies")
-    private List<Long> movies;
+    private Long moviesid;
+    @Transient
+    private Movie movie;
 
 
     @Override

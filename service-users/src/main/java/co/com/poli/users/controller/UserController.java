@@ -63,6 +63,7 @@ public class UserController {
         return builder.success(user);
     }
 
+
     private String formatMessage(BindingResult result){
         List<Map<String,String>> errors = result.getFieldErrors().stream()
                 .map(err -> {

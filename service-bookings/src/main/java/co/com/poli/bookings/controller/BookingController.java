@@ -63,6 +63,15 @@ public class BookingController {
         return builder.success(booking);
     }
 
+    @GetMapping("/{userid}")
+    public Response findByUserID(@PathVariable("userid") Long userId){
+        Booking booking = bookingService.findByUserId(userId);
+        if(booking==null){
+            return builder.success(null);
+        }
+        return builder.success(booking);
+    }
+
     private String formatMessage(BindingResult result){
         List<Map<String,String>> errors = result.getFieldErrors().stream()
                 .map(err -> {

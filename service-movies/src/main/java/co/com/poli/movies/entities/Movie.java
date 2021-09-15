@@ -1,6 +1,7 @@
 package co.com.poli.movies.entities;
 
 import lombok.*;
+import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -29,8 +30,8 @@ public class Movie {
     @Column(name="director")
     private String director;
 
-    @NotEmpty(message = "El director no debe ser vacio")
-    @Size(max = 5)
+   // @NotEmpty(message = "El director no debe ser vacio")
+    @Range(min = 1, max = 5)
     @Column(name="rating")
     private int rating;
 
