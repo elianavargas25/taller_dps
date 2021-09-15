@@ -7,6 +7,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Setter
@@ -23,20 +24,23 @@ public class Booking {
     @Column(name="id", updatable = false,nullable = false,unique = true)
     private Long id;
 
-    @NotEmpty(message = "El user id no debe ser vacio")
+    @NotNull(message = "El user id no debe ser vacio")
     @Column(name="userid" )
     private Long userId;
+
     @Transient
     private User user;
 
-    @NotEmpty(message = "El show time id no debe ser vacio")
+    @NotNull(message = "El showtime id no debe ser vacio")
     @Column(name="showtimeid")
-    private Long showtimeid;
+    private Long showtimeId;
+
     @Transient
     private Showtime showtime;
 
     @Column(name="movies")
-    private Long moviesid;
+    private Long moviesId;
+
     @Transient
     private Movie movie;
 
