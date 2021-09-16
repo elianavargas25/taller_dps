@@ -45,6 +45,10 @@ subprojects{
         enabled=false
     }
 
+    jar {
+        enabled = true
+    }
+
 }
 
 
